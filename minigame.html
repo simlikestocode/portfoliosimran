@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click the Moving Button Game</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#score {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#button {
+  padding: 12px 20px;
+  border: none;
+  background: #ff6a00;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  position: absolute;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div id="score">Score: 0</div>
+  <button id="button">Click Me!</button>
+</div>
+
+<script>
+const button = document.getElementById('button');
+const container = document.querySelector('.container');
+const scoreDisplay = document.getElementById('score');
+
+let score = 0;
+
+button.addEventListener('click', () => {
+  score++;
+  scoreDisplay.textContent = "Score: " + score;
+  moveButton();
+});
+
+function moveButton() {
+  const containerRect = container.getBoundingClientRect();
+  const buttonRect = button.getBoundingClientRect();
+
+  const maxX = containerRect.width - buttonRect.width;
+  const maxY = containerRect.height - buttonRect.height;
+
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
+
+  button.style.left = randomX + "px";
+  button.style.top = randomY + "px";
+}
+</script>
+
+</body>
+</html>
