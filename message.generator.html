@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Message Generator</title>
+
+<style>
+body {
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg, #667eea, #764ba2);
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+
+.container {
+background: white;
+padding: 40px;
+border-radius: 12px;
+text-align: center;
+box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+width: 320px;
+}
+
+h1 {
+margin-bottom: 20px;
+}
+
+#message {
+margin-top: 20px;
+font-size: 18px;
+color: #333;
+min-height: 40px;
+transition: 0.3s ease;
+}
+
+button {
+background: #667eea;
+color: white;
+border: none;
+padding: 12px 20px;
+border-radius: 8px;
+font-size: 16px;
+cursor: pointer;
+}
+
+button:hover {
+background: #5563d1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Message Generator</h1>
+
+<button onclick="generateMessage()">
+Generate Message
+</button>
+
+<div id="message"></div>
+</div>
+
+<script>
+const messages = [
+"Believe in yourself.",
+"Every day is a new opportunity.",
+"Small progress is still progress.",
+"You are capable of great things.",
+"Stay focused and keep building.",
+"Your hard work will pay off.",
+"Learning never stops.",
+"Dream big and start small."
+];
+
+function generateMessage() {
+const randomIndex = Math.floor(Math.random() * messages.length);
+document.getElementById("message").textContent = messages[randomIndex];
+}
+</script>
+
+</body>
+</html>
